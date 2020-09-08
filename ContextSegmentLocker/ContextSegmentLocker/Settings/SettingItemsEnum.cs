@@ -7,6 +7,8 @@
     	Id = 3,
     	Note = 4,
     	Title = 5,
-    	Meta = 6
+        Meta = 6,
+
+        Other = 7
     }
 }

@@ -33,7 +33,7 @@ namespace ContextSegmentLocker
             var segmentsToLock = GetSegmentListFromSettings();
             //In here you should add your custom bilingual processor to the file converter
             multiFileConverter.AddBilingualProcessor(
-                    new Sdl.FileTypeSupport.Framework.Core.Utilities.BilingualApi.BilingualContentHandlerAdapter(new SegmentLockerPreProcessor(segmentsToLock)));
+                    new Sdl.FileTypeSupport.Framework.Core.Utilities.BilingualApi.BilingualContentHandlerAdapter(new SegmentLockerPreProcessor(segmentsToLock,_settings.OtherTextbox, _settings.ClearCheck)));
         }
 
         private List<SettingItemsEnum> GetSegmentListFromSettings()
@@ -63,6 +63,10 @@ namespace ContextSegmentLocker
             if (_settings.MetaCheck)
             {
                 lockedSegments.Add(SettingItemsEnum.Meta);
+            }
+            if (_settings.OtherCheck)
+            {
+                lockedSegments.Add(SettingItemsEnum.Other);
             }
 
             return lockedSegments;

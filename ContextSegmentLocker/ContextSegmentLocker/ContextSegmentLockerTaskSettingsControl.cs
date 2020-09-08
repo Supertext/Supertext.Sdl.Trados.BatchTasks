@@ -12,6 +12,11 @@ namespace ContextSegmentLocker
         private CheckBox cb_note;
         private CheckBox cb_title;
         private CheckBox cb_meta;
+        private CheckBox cb_clear_all_locked_segments;
+        private CheckBox cb_other;
+        private TextBox tb_other_context;
+        private Label lbClearInfo;
+        private Label label2;
         private Label label1;
 
         // Member that refers to the batch task settings
@@ -33,6 +38,9 @@ namespace ContextSegmentLocker
             SettingsBinder.DataBindSetting<bool>(cb_title, "Checked", Settings, nameof(Settings.TitleCheck));
             SettingsBinder.DataBindSetting<bool>(cb_note, "Checked", Settings, nameof(Settings.NoteCheck));
             SettingsBinder.DataBindSetting<bool>(cb_meta, "Checked", Settings, nameof(Settings.MetaCheck));
+            SettingsBinder.DataBindSetting<bool>(cb_other, "Checked", Settings, nameof(Settings.OtherCheck));
+            SettingsBinder.DataBindSetting<string>(tb_other_context, "Text", Settings, nameof(Settings.OtherTextbox));
+            SettingsBinder.DataBindSetting<bool>(cb_clear_all_locked_segments, "Checked", Settings, nameof(Settings.ClearCheck));
 
             UpdateUi(taskSettings);
         }
@@ -66,6 +74,11 @@ namespace ContextSegmentLocker
             this.cb_note = new System.Windows.Forms.CheckBox();
             this.cb_title = new System.Windows.Forms.CheckBox();
             this.cb_meta = new System.Windows.Forms.CheckBox();
+            this.cb_clear_all_locked_segments = new System.Windows.Forms.CheckBox();
+            this.cb_other = new System.Windows.Forms.CheckBox();
+            this.tb_other_context = new System.Windows.Forms.TextBox();
+            this.lbClearInfo = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -137,8 +150,57 @@ namespace ContextSegmentLocker
             this.cb_meta.Text = "Meta";
             this.cb_meta.UseVisualStyleBackColor = true;
             // 
-            // MyCustomBatchTaskSettingsControl
+            // cb_clear_all_locked_segments
             // 
+            this.cb_clear_all_locked_segments.AutoSize = true;
+            this.cb_clear_all_locked_segments.Location = new System.Drawing.Point(28, 366);
+            this.cb_clear_all_locked_segments.Name = "cb_clear_all_locked_segments";
+            this.cb_clear_all_locked_segments.Size = new System.Drawing.Size(191, 21);
+            this.cb_clear_all_locked_segments.TabIndex = 9;
+            this.cb_clear_all_locked_segments.Text = "Clear all locked segments";
+            this.cb_clear_all_locked_segments.UseVisualStyleBackColor = true;
+            // 
+            // cb_other
+            // 
+            this.cb_other.AutoSize = true;
+            this.cb_other.Location = new System.Drawing.Point(28, 250);
+            this.cb_other.Name = "cb_other";
+            this.cb_other.Size = new System.Drawing.Size(66, 21);
+            this.cb_other.TabIndex = 10;
+            this.cb_other.Text = "Other";
+            this.cb_other.UseVisualStyleBackColor = true;
+            // 
+            // tb_other_context
+            // 
+            this.tb_other_context.Location = new System.Drawing.Point(159, 250);
+            this.tb_other_context.Name = "tb_other_context";
+            this.tb_other_context.Size = new System.Drawing.Size(175, 22);
+            this.tb_other_context.TabIndex = 11;
+            this.tb_other_context.TextChanged += new System.EventHandler(this.tb_other_context_TextChanged);
+            // 
+            // lbClearInfo
+            // 
+            this.lbClearInfo.Location = new System.Drawing.Point(51, 398);
+            this.lbClearInfo.Name = "lbClearInfo";
+            this.lbClearInfo.Size = new System.Drawing.Size(368, 63);
+            this.lbClearInfo.TabIndex = 12;
+            this.lbClearInfo.Text = "For example, if locked segments should not contain TM matches.";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(51, 288);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(368, 63);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Only use existing names from Trados.";
+            // 
+            // ContextSegmentLockerTaskSettingsControl
+            // 
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbClearInfo);
+            this.Controls.Add(this.tb_other_context);
+            this.Controls.Add(this.cb_other);
+            this.Controls.Add(this.cb_clear_all_locked_segments);
             this.Controls.Add(this.cb_meta);
             this.Controls.Add(this.cb_title);
             this.Controls.Add(this.cb_note);
@@ -146,10 +208,15 @@ namespace ContextSegmentLocker
             this.Controls.Add(this.cb_link);
             this.Controls.Add(this.cb_paragraph);
             this.Controls.Add(this.label1);
-            this.Name = "MyCustomBatchTaskSettingsControl";
+            this.Name = "ContextSegmentLockerTaskSettingsControl";
             this.Size = new System.Drawing.Size(469, 528);
             this.ResumeLayout(false);
             this.PerformLayout();
+
+        }
+
+        private void tb_other_context_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
