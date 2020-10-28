@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PluginPackage xmlns="http://www.sdl.com/Plugins/PluginPackage/1.0">
   <PlugInName>Context Segment Locker</PlugInName>
-  <Version>1.1.0.0</Version>
+  <Version>1.1.0.1</Version>
   <Description>
     Context Segment Locker - SDL Trados Studio Batch Task plugin by Supertext
   </Description>
   <Author>Supertext</Author>
-  <RequiredProduct name="SDLTradosStudio" minversion="15.0" maxversion="16.0" />
+  <RequiredProduct name="SDLTradosStudio" minversion="14.0" maxversion="16.0" />
 </PluginPackage>
